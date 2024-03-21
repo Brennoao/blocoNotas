@@ -1,16 +1,18 @@
 import { View } from "react-native";
-import { Button } from "react-native-paper";
+import { Text } from "react-native-paper";
 import StyleRightSwipeable from "../style/StyleRightSwipeable";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-export default function RightSwipeable() {
+export default function RightSwipeable(props) {
+    const { editarItem, deleteStorage } = props;
     return (
         <View style={StyleRightSwipeable.mainContainer}>
-            <Button style={StyleRightSwipeable.buttonMain}>
-                Editar
-            </Button>
-            <Button style={StyleRightSwipeable.buttonMain}>
-                Excluir
-            </Button>
+            <TouchableOpacity onPress={editarItem} style={[StyleRightSwipeable.buttonMain, StyleRightSwipeable.buttonEdit]}>
+                <Text>Editar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={deleteStorage} style={[StyleRightSwipeable.buttonMain, StyleRightSwipeable.buttonRemove]}>
+                <Text style={StyleRightSwipeable.TextRemove}>Excluir</Text>
+            </TouchableOpacity>
         </View>
     )
 }

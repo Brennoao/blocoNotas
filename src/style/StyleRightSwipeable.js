@@ -2,8 +2,7 @@ import { StyleSheet } from "react-native";
 
 const StyleRightSwipeable = StyleSheet.create({
     mainContainer: {
-        width: '40%',
-        backgroundColor: 'gray',
+        // backgroundColor: 'gray',
 
         flexDirection: 'row',
         alignItems: 'center',
@@ -12,6 +11,23 @@ const StyleRightSwipeable = StyleSheet.create({
 
     buttonMain: {
         flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+
+        width: '100%',
+        paddingHorizontal: 20
+    },
+
+    buttonEdit: {
+        backgroundColor: 'lightgray'
+    },  
+
+    buttonRemove: {
+        backgroundColor: 'red',
+    },
+
+    TextRemove: {
+        color: 'white'
     }
 })
 
