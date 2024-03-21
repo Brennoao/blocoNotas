@@ -3,7 +3,7 @@ const FabActions = ({ showModal }) => [
     {
         icon: 'eye',
         label: 'Notas Salves',
-        onPress: () => {},
+        onPress: () => console.log('test')
     },
     {
         icon: 'plus',

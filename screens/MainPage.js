@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Pressable, View } from "react-native";
-import { FlatList, Swipeable } from "react-native-gesture-handler";
+import { FlatList, Swipeable, TouchableOpacity } from "react-native-gesture-handler";
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Button, Card, Text, TextInput } from "react-native-paper";
 import Toast from 'react-native-toast-message';
@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import RightSwipeable from "../src/components/RightSwipeable";
 import GenerateId from "../src/components/GenerateId";
 import useMonitorDataKeyRemoval from "../src/components/useMonitorDataKeyRemoval";
+import { StyleGlobal } from "../src/style/Global";
 
 export default function MainPage({ navigation }) {
     useMonitorDataKeyRemoval()
@@ -121,41 +122,22 @@ export default function MainPage({ navigation }) {
         }
     }
 
-
-    // const getAllData = async () => {
-    //     try {
-    //       const keys = await AsyncStorage.getAllKeys();
-    //       const result = await AsyncStorage.multiGet(keys);
-          
-    //       // 'result' é um array de arrays, cada um com a forma [key, value]
-    //       return result.map(([key, value]) => {
-    //         return { key, value };
-    //       });
-    //     } catch (error) {
-    //       console.error('Erro ao recuperar os dados', error);
-    //     }
-    //   };
-      
-    //   // Exemplo de uso da função
-    //   getAllData().then(data => {
-    //     console.log(data); // Aqui você tem todos os dados salvos
-    //   });
     return (
         <View style={StyleMainPage.mainContainer}>
             <View style={StyleMainPage.inputContainer}>
                 <TextInput
-                    style={{ flex: 4 }}
+                    style={{ flex: 1 }}
                     mode='outlined'
                     label='Text'
                     value={inputValue}
                     onChangeText={(text) => setInputValue(text)}
                 />
-                <Button
+                <TouchableOpacity
                     style={StyleMainPage.button}
                     mode='outlined'
                     onPress={() => { if (edit) { SaveStorage(currentItem); } else { SaveStorage(inputValue); } }}>
                     <Text>{edit ? 'Editar' : 'Salvar'}</Text>
-                </Button>
+                </TouchableOpacity>
 
             </View>
 
@@ -166,11 +148,11 @@ export default function MainPage({ navigation }) {
                 renderItem={({ item }) => (
                     <Swipeable renderRightActions={() => <RightSwipeable editarItem={() => editButton(item.id)} deleteStorage={() => AlertDelete(item.id)} />} containerStyle={{ width: '100%' }}>
                         <Pressable onPress={() => navigation.navigate('InsideNotes', item.id)}>
-                            <Card mode="outlined" key={item.id} style={{ borderRadius: 0, borderColor: '#FFFF' }}>
+                            <Card mode="outlined" key={item.id} style={{ borderRadius: 0, borderColor: StyleGlobal.primaryColor }}>
                                 <Card.Content style={StyleMainPage.insideCard}>
                                     <Text>{item.value}</Text>
                                     <Button>
-                                        <Icon name="people" size={25} color="black" />
+                                        <Icon name="people" size={25} color={StyleGlobal.secondaryColor} />
                                     </Button>
                                 </Card.Content>
                             </Card>
@@ -178,7 +160,7 @@ export default function MainPage({ navigation }) {
                     </Swipeable>
                 )}
             />
-            <Button onPress={limparAsyncStorage}>test</Button>
+            {/* <Button onPress={limparAsyncStorage}>test</Button> */}
         </View >
 
     )

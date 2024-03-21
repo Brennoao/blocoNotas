@@ -18,16 +18,16 @@ const StyleInsideNotes = StyleSheet.create({
 
         borderWidth: 1,
         borderColor: StyleGlobal.secondaryColor,
-        borderRadius: 10,
+        borderRadius: StyleGlobal.primarySpacing,
 
         height: 50,
-        paddingLeft: 10,
+        paddingLeft: StyleGlobal.primarySpacing,
         overflow: 'hidden',
     },
 
     content: {
         flex: 1,
-        marginVertical: 10
+        marginVertical: StyleGlobal.primarySpacing
     },
 
     selector: {
@@ -47,7 +47,7 @@ const StyleInsideNotes = StyleSheet.create({
         backgroundColor: StyleGlobal.thirdColor,
         color: 'white',
         height: '100%',
-        padding: 10
+        padding: StyleGlobal.primarySpacing
     }
 });
 

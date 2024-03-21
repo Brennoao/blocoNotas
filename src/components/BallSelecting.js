@@ -29,6 +29,7 @@ export default function BallSelecting(props) {
         try {
             const getData = await AsyncStorage.getItem('marked');
             let applyData = getData ? JSON.parse(getData) : [];
+            console.log(applyData);
             if (!Array.isArray(applyData)) {
                 applyData = [];
             }
